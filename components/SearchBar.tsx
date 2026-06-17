@@ -1,8 +1,8 @@
 "use client";
 
+import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Search } from "lucide-react";
 
 export default function SearchBar() {
 
@@ -21,7 +21,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div className="relative w-full">
+    <div className="relative">
 
       <input
         value={texto}
@@ -33,33 +33,29 @@ export default function SearchBar() {
             buscar();
           }
         }}
-        placeholder="Buscar productos..."
-        type="text"
+        placeholder="Buscar productos, marcas y más..."
         className="
-          w-full
-          bg-white
-          rounded-md
-          p-3
-          pr-12
-          outline-none
-          border
-          border-gray-200
-          focus:border-blue-500
-        "
+        w-full
+        bg-white
+        rounded-lg
+        h-11
+        pl-4
+        pr-12
+        outline-none
+        shadow-sm"
       />
 
       <button
         onClick={buscar}
         className="
-          absolute
-          right-3
-          top-1/2
-          -translate-y-1/2
-          text-gray-500
-          hover:text-blue-600
-        "
+        absolute
+        right-3
+        top-1/2
+        -translate-y-1/2
+        text-slate-500
+        hover:text-blue-600"
       >
-        <Search size={20} />
+        <Search size={22} />
       </button>
 
     </div>

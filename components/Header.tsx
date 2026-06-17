@@ -1,52 +1,98 @@
 "use client";
 
-import { Search, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
+import CartIcon
+from "./CartIcon";
+import {
+  ShoppingCart,
+  User,
+  Store,
+} from "lucide-react";
+
 import SearchBar from "./SearchBar";
 
 export default function Header() {
   return (
     <header
       className="
-      bg-yellow-400
-      shadow-md
       sticky
       top-0
-      z-50"
+      z-50
+      bg-[#FFE600]
+      border-b
+      border-yellow-300
+      shadow-sm"
     >
       <div
         className="
         max-w-7xl
         mx-auto
-        px-4
-        py-3
-        flex
-        items-center
-        gap-4"
+        px-4"
       >
-        <Link
-          href="/"
+        <div
           className="
-          text-2xl
-          font-bold"
+          h-16
+          flex
+          items-center
+          gap-6"
         >
-          Mi Bazar
-        </Link>
+          <Link
+            href="/"
+            className="
+            flex
+            items-center
+            gap-2
+            font-bold
+            text-2xl
+            text-slate-800
+            whitespace-nowrap"
+          >
+            <Store size={30} />
+            Mi Bazar
+          </Link>
 
-        <div className="flex-1 relative">
-          
+          <div className="flex-1">
+            <SearchBar />
+          </div>
 
-          <SearchBar 
-            
-          />
+          <div
+            className="
+            flex
+            items-center
+            gap-4"
+          >
+            <div
+              className="
+              flex
+              items-center
+              gap-4"
+            >
+              <CartIcon />
+
+              <Link
+                href="/login"
+                className="
+                p-2
+                rounded-lg
+                hover:bg-yellow-300
+                transition"
+              >
+                <User size={28} />
+              </Link>
+            </div>
+
+            <Link
+              href="/login"
+              className="
+              p-2
+              rounded-lg
+              hover:bg-yellow-300
+              transition"
+            >
+              <User size={28} />
+            </Link>
+          </div>
         </div>
-        <Link href="/carrito">
-          <ShoppingCart size={28} />
-        </Link>
-
-        <Link href="/login">
-          <User size={28} />
-        </Link>
       </div>
     </header>
   );

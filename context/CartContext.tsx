@@ -9,11 +9,20 @@ import {
 
 const CartContext = createContext<any>(null);
 
+export interface CartItem {
+  id: number;
+  nombre: string;
+  precio: number;
+  cantidad: number;
+  imagen_principal?: string;
+}
+
 export function CartProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
 
   const [items, setItems] =
     useState<any[]>([]);
@@ -21,7 +30,9 @@ export function CartProvider({
   useEffect(() => {
 
     const data =
-      localStorage.getItem("cart");
+      localStorage.getItem(
+        "carrito"
+      );
 
     if (data) {
       setItems(JSON.parse(data));
@@ -32,30 +43,33 @@ export function CartProvider({
   useEffect(() => {
 
     localStorage.setItem(
-      "cart",
+      "carrito",
       JSON.stringify(items)
     );
 
   }, [items]);
 
-  function addItem(producto: any) {
+  function addItem(
+    producto: any
+  ) {
 
     const existe =
       items.find(
-        (x) => x.id === producto.id
+        (i) =>
+          i.id === producto.id
       );
 
     if (existe) {
 
       setItems(
-        items.map((x) =>
-          x.id === producto.id
+        items.map((i) =>
+          i.id === producto.id
             ? {
-                ...x,
+                ...i,
                 cantidad:
-                  x.cantidad + 1,
+                  i.cantidad + 1,
               }
-            : x
+            : i
         )
       );
 
@@ -71,13 +85,18 @@ export function CartProvider({
     ]);
   }
 
-  function removeItem(id: number) {
-
+  function removeItem(
+    id: number
+  ) {
     setItems(
       items.filter(
-        (x) => x.id !== id
+        (i) => i.id !== id
       )
     );
+  }
+
+  function clearCart() {
+    setItems([]);
   }
 
   return (
@@ -86,6 +105,7 @@ export function CartProvider({
         items,
         addItem,
         removeItem,
+        clearCart,
       }}
     >
       {children}
@@ -93,5 +113,8 @@ export function CartProvider({
   );
 }
 
-export const useCart = () =>
-  useContext(CartContext);
+export function useCart() {
+  return useContext(
+    CartContext
+  );
+}

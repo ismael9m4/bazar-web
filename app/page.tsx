@@ -22,13 +22,14 @@ export default async function Home() {
 
   return (
     <>
-      <Header />
+    
 
       <main
         className="
         max-w-7xl
         mx-auto
-        px-4"
+        px-4
+        pb-16"
       >
         <Banner />
 
@@ -38,24 +39,42 @@ export default async function Home() {
           }
         />
 
-        <h2
+        <div
           className="
-          text-3xl
-          font-bold
-          mt-8
+          flex
+          items-center
+          justify-between
+          mt-10
           mb-6"
         >
-          Productos
-        </h2>
+          <div>
+            <h2
+              className="
+              text-3xl
+              font-bold
+              text-slate-800"
+            >
+              Productos destacados
+            </h2>
+
+            <p
+              className="
+              text-slate-500
+              mt-1"
+            >
+              Descubrí nuestras mejores ofertas
+            </p>
+          </div>
+        </div>
 
         <div
           className="
           grid
-          grid-cols-1
-          sm:grid-cols-2
+          grid-cols-2
           md:grid-cols-3
           lg:grid-cols-4
-          gap-6"
+          xl:grid-cols-5
+          gap-5"
         >
           {productos?.map(
             (producto) => (
@@ -68,7 +87,7 @@ export default async function Home() {
         </div>
       </main>
 
-      <Footer />
+      
     </>
   );
 }
