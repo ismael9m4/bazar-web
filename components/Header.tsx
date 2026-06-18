@@ -81,16 +81,7 @@ export default function Header() {
               </Link>
             </div>
 
-            <Link
-              href="/login"
-              className="
-              p-2
-              rounded-lg
-              hover:bg-yellow-300
-              transition"
-            >
-              <User size={28} />
-            </Link>
+            
           </div>
         </div>
       </div>
